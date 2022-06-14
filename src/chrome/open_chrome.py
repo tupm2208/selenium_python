@@ -10,7 +10,7 @@ def get_profile(email):
 
     df = pd.read_csv(r"C:\Users\TuPM\Downloads\projects\Python-Selenium-Tutorial\datasets\data.csv")
     df = df[df["email"] == email]
-    if len(df) != 1:
+    if len(df) < 1:
         print("Number of rows: ", len(df))
         return None
     
@@ -22,17 +22,21 @@ def get_profile(email):
 
 
 def open_chrome(profile):
+    
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")
-    options.add_argument(f'--proxy-server={profile["IP"]}:2129')
+    # options.add_argument(f'--proxy-server={profile["IP"]}:2129')
+    options.add_argument(f'--proxy-server==socks5://127.0.0.1:30558')
+    # options.add_argument(f'--proxy-server==socks5://192.168.1.180:30490')
     options.add_argument(r'--user-data-dir=C:\Users\TuPM\AppData\Local\Google\Chrome\User Data')
     options.add_argument(f'--profile-directory={profile["email"]}')
+    
     browser = uc.Chrome(
         options=options,
     )
+    
 
     tz_params = {'timezoneId': 'Asia/Tokyo'}
-    # tz_params = {'timezoneId': 'America/Dawson'}
     
     browser.execute_cdp_cmd('Emulation.setTimezoneOverride', tz_params)
     while True:
@@ -44,7 +48,7 @@ def open_chrome(profile):
 def is_bad_proxy(profile):    
     try:
         print("checking...")
-        proxy_handler = urllib.request.ProxyHandler({'http': profile["IP"]+":2129"})
+        proxy_handler = urllib.request.ProxyHandler({'socks5': "127.0.0.1:30558"})
         opener = urllib.request.build_opener(proxy_handler)
         opener.addheaders = [('User-agent', 'Mozilla/5.0')]
         urllib.request.install_opener(opener)
@@ -69,9 +73,17 @@ if __name__ == "__main__":
     # email = "momoko.kudo2005@gmail.com"
     # email = "momoko.tanabe0303@gmail.com"
     # email = "vking3412@gmail.com"
-    email = "manionjakari5101998@gmail.com"
+    # email = "manionjakari5101998@gmail.com"
     # email = "phamminhtu2207@gmail.com"
+    # email = "tu.phamminh.2207@gmail.com"
+    # email = "arrow6372567nao@gmail.com"
+    # email = "arrow7877943momoko@gmail.com"
+    email = "arrow7804399kyo@gmail.com"
+    # email = "arrow7820283mei@gmail.com"
     profile = get_profile(email)
+    
+    # open_chrome(profile)
     if profile is not None:
         if not is_bad_proxy(profile):
+            print(f"{email} openning...")
             open_chrome(profile)
