@@ -26,8 +26,8 @@ def open_chrome(profile):
     
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")
-    options.add_argument(f'--proxy-server={profile["IP"]}:2129')
-    # options.add_argument(f'--proxy-server==socks5://127.0.0.1:30152')
+    # options.add_argument(f'--proxy-server={profile["IP"]}:2129')
+    options.add_argument(f'--proxy-server==socks5://127.0.0.1:38052')
     # options.add_argument(f'--proxy-server==107.191.62.48:2129')
     options.add_argument(r'--user-data-dir=C:\Users\TuPM\AppData\Local\Google\Chrome\User Data')
     options.add_argument(f'--profile-directory={profile["email"]}')
@@ -36,8 +36,8 @@ def open_chrome(profile):
         options=options,
     )
     
-    tz_params = {'timezoneId': 'Asia/Tokyo'}
-    browser.execute_cdp_cmd('Emulation.setTimezoneOverride', tz_params)
+    # tz_params = {'timezoneId': 'Asia/Tokyo'}
+    # browser.execute_cdp_cmd('Emulation.setTimezoneOverride', tz_params)
 
     while True:
         time.sleep(10000)
@@ -89,18 +89,17 @@ if __name__ == "__main__":
     # email = "quoctranyh2axyl5cu@gmail.com"
     # email = "nganguyenwkhp1y@gmail.com"
     # email = "haungovsmouhbmg8p4@gmail.com"
-    email = "hungleg180gri4ay@gmail.com"
+    # email = "hungleg180gri4ay@gmail.com"
     # email = "huongnguyen89je9c3@gmail.com"
     # email = "binhnguyenxafzixy7qe@gmail.com"
     # email = "nghiahuys7r4b5ro@gmail.com"
     # email = "binhlywihspnei8qw@gmail.com"
-    # email = "liannetownsend8918@gmail.com"
 
     profile = get_profile(email)
-    profile = {
-        "email": email,
-        # "IP": "139.162.84.217"
-    }
+    # profile = {
+    #     "email": email,
+    #     # "IP": "139.162.84.217"
+    # }
     print(f"{email} openning...")
     open_chrome(profile)
     # if profile is not None:
