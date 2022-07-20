@@ -9,11 +9,11 @@ from selenium import webdriver
 
 def get_profile(email):
 
-    df = pd.read_csv(r"C:\Users\TuPM\Downloads\projects\Python-Selenium-Tutorial\datasets\data.csv")
+    df = pd.read_csv(r"../../datasets/data.csv")
     df = df[df["email"] == email]
     if len(df) < 1:
         print("Number of rows: ", len(df))
-        return None
+        return {"email": email}
     
     columns = list(df.columns)
     arr = df.values.tolist()[0]
@@ -89,7 +89,7 @@ if __name__ == "__main__":
     # email = "quoctranyh2axyl5cu@gmail.com"
     # email = "nganguyenwkhp1y@gmail.com"
     # email = "haungovsmouhbmg8p4@gmail.com"
-    email = "hungleg180gri4ay@gmail.com"
+    # email = "hungleg180gri4ay@gmail.com"
     # email = "huongnguyen89je9c3@gmail.com"
     # email = "binhnguyenxafzixy7qe@gmail.com"
     # email = "nghiahuys7r4b5ro@gmail.com"
@@ -97,10 +97,8 @@ if __name__ == "__main__":
     # email = "liannetownsend8918@gmail.com"
 
     profile = get_profile(email)
-    profile = {
-        "email": email,
-        # "IP": "139.162.84.217"
-    }
+    # profile["IP"] = "139.162.84.217"
+
     print(f"{email} openning...")
     open_chrome(profile)
     # if profile is not None:
