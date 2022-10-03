@@ -26,11 +26,11 @@ def open_chrome(profile):
     
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")
-    options.add_argument(f'--proxy-server={profile["IP"]}:2129')
+    # options.add_argument(f'--proxy-server={profile["IP"]}:2129')
     # options.add_argument(f'--proxy-server==socks5://127.0.0.1:30152')
-    # options.add_argument(f'--proxy-server==107.191.62.48:2129')
-    options.add_argument(r'--user-data-dir=C:\Users\TuPM\AppData\Local\Google\Chrome\User Data')
-    options.add_argument(f'--profile-directory={profile["email"]}')
+    # options.add_argument(f'--proxy-server==54.204.206.33:31112')
+    # options.add_argument(r'--user-data-dir=C:\Users\TuPM\AppData\Local\Google\Chrome\User Data')
+    # options.add_argument(f'--profile-directory={profile["email"]}')
     
     browser = uc.Chrome(
         options=options,
@@ -71,7 +71,7 @@ if __name__ == "__main__":
     # email = "hirokawa.naoko2702@gmail.com"
     # email = "nagisa.hiroshi2610@gmail.com"
     # email = "momoko.kudo2005@gmail.com"
-    # email = "momoko.tanabe0303@gmail.com"
+    email = "momoko.tanabe0303@gmail.com"
     # email = "vking3412@gmail.com"
     # email = "manionjakari5101998@gmail.com"
     # email = "phamminhtu2207@gmail.com"
@@ -95,6 +95,8 @@ if __name__ == "__main__":
     # email = "nghiahuys7r4b5ro@gmail.com"
     # email = "binhlywihspnei8qw@gmail.com"
     # email = "liannetownsend8918@gmail.com"
+    # email = "kepplerdeshields4209@gmail.com"
+    # email = "tienngow4q5sfl6clj@gmail.com"
 
     profile = get_profile(email)
     # profile["IP"] = "139.162.84.217"

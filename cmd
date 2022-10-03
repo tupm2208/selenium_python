@@ -1,0 +1,1 @@
+Start /max "" "C:\Users\TuPM\.gologin_test\browser\orbita-browser\chrome.exe" --user-data-dir="C:\Users\TuPM\AppData\Local\Temp\GoLogin\profiles\62d7271ffdd9ed5711fd6ab6"
